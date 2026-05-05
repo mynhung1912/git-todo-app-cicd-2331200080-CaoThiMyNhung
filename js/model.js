@@ -54,3 +54,7 @@ class TodoService {
 }
 
 module.exports = { TodoService };
+// Cuối file model.js
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { TodoService };
+}
