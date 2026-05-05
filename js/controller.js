@@ -32,3 +32,10 @@ class Controller {
 }
 
 module.exports = { Controller };
+// Bạn kiểm tra xem hàm tạo thẻ li có giống thế này không:
+const li = document.createElement('li');
+li.innerHTML = `
+    <input type="checkbox">
+    <span>${text}</span>
+    <button class="delete-btn">Delete</button>
+`;
