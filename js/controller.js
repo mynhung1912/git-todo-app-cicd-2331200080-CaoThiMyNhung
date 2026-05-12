@@ -1,41 +1,18 @@
 class Controller {
-    constructor(service, view) {
-        this.service = service;
+    constructor(model, view) {
+        this.model = model;
         this.view = view;
     }
 
-    initialize() {
-        // --- OBSERVER PATTERN ---
-        // The controller subscribes the view to the service.
-        this.service.addObserver(this.view);
-
-        // Bind view events to controller handlers
-        this.view.bindAddTodo(this.handleAddTodo.bind(this));
-        this.view.bindToggleTodo(this.handleToggleTodo.bind(this));
-        this.view.bindRemoveTodo(this.handleRemoveTodo.bind(this));
-
-        // Initial render
-        this.view.update(this.service.getTodos());
-    }
-
     handleAddTodo(text) {
-        this.service.addTodo(text);
+        if (text && text.trim()) {
+            this.model.addTodo(text);
+        }
     }
 
-    handleToggleTodo(id) {
-        this.service.toggleTodoComplete(id);
-    }
-
-    handleRemoveTodo(id) {
-        this.service.removeTodo(id);
+    handleDeleteTodo(id) {
+        this.model.removeTodo(id);
     }
 }
 
 module.exports = { Controller };
-// Bạn kiểm tra xem hàm tạo thẻ li có giống thế này không:
-const li = document.createElement('li');
-li.innerHTML = `
-    <input type="checkbox">
-    <span>${text}</span>
-    <button class="delete-btn">Delete</button>
-`;
